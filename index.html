@@ -1,203 +1,203 @@
-<!DOCTYPE html >
-< html  lang =" pt-br " >
-< cabeçalho >
-  < meta  charset =" UTF-8 " >
-  < meta  name =" viewport " content =" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no " >
-  < title > Mural de Destaques - CoffeeArt </ title >
-  < link  rel =" stylesheet " href =" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css " >
-  < estilo >
-    : raiz {
-      --café-escuro :  # 4a332d ;
-      --cafe-light :  # fff4e6 ;
-      --accent :  # d4a373 ;
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mural de Destaques - CoffeeArt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    :root {
+      --cafe-dark: #4a332d;
+      --cafe-light: #fff4e6;
+      --accent: #d4a373;
     }
 
-    corpo ,  html {
-      margem :  0 ; preenchimento :  0 ; largura :  100 % ; altura :  100 % ;
-      fundo :  var ( --cafe-light );
-      família de fontes :  'Segoe UI' , Roboto , sans-serif;
-      -webkit-font-smoothing : antialiased;
+    body, html { 
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      background: var(--cafe-light);
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    cabeçalho {
-      largura :  100 % ; exibição : flexível; direção flexível : coluna; alinhamento de itens : centro ; preenchimento :  20px  0  10px 0  ;
+    header { 
+      width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px 0 10px 0;
     }
-    . mural-título {
-      largura :  90 % ; largura máxima :  600px ; cor de fundo :  var ( --cafe-dark ); cor :  var ( --accent );
-      preenchimento :  15 px ; raio da borda :  12 px ; sombra da caixa :  0  4 px  10 px  rgba ( 0 , 0 , 0 , 0.1 ); alinhamento do texto : centro;
+    .mural-titulo {
+      width: 90%; max-width: 600px; background-color: var(--cafe-dark); color: var(--accent);
+      padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;
     }
-    .mural -titulo  span { font-size :  18 px ; font-weight : bold; letter-spacing :  2 px ; text-transform : uppercase; }
+    .mural-titulo span { font-size: 18px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
     
-    /* CARTÕES DOS DE CONTÊINER */
-    . mural-container {
-      display : flex; flex - direction : column ; align- items : center ; gap :  25px ; padding :  20px 10px 50px 10px ;   
+    /* CONTAINER DOS CARDS */
+    .mural-container {
+      display: flex; flex-direction: column; align-items: center; gap: 25px; padding: 20px 10px 50px 10px;
     }
 
     /* CARD DESTAQUE AMPLIAÇÃO */
-    . cliente-cartão {
-      raio da borda :  20 px ; transbordamento : oculto ; fundo :  #ffffff ; borda :  1 px sólida # efe4d8 ;
-      posição : relativa; sombra da caixa :  0  8 px  20 px  rgba ( 74 ,  51 ,  45 ,  0.1 );
-      largura :  360 px ; exibição : flexível; direção flexível : coluna;
+    .card-cliente { 
+      border-radius: 20px; overflow: hidden; background: #ffffff; border: 1px solid #efe4d8; 
+      position: relative; box-shadow: 0 8px 20px rgba(74, 51, 45, 0.1); 
+      width: 360px; display: flex; flex-direction: column;
     }
 
-    /* RECIPIENTE DA FOTO/VÍDEO */
-    . media-container {
-      largura :  100 % ; altura :  450px ; posição : relativa ; fundo :  # 000 ;
+    /* CONTAINER DA FOTO/VÍDEO */
+    .media-container {
+      width: 100%; height: 450px; position: relative; background: #000;
     }
-    .media -container  iframe , .media -container  img {
-      largura :  100 % ; altura :  100 % ; ajuste ao objeto : cobrir; borda : nenhuma; exibição : bloco;
+    .media-container iframe, .media-container img {
+      width: 100%; height: 100%; object-fit: cover; border: none; display: block;
     }
 
     /* SELO DE PONTUAÇÃO */
-    . badge-pontuacao {
-      posição : absoluta; topo :  15 px ; esquerda :  15 px ;
-      plano de fundo :  var ( --cafe-dark ); cor :  var ( -accent );
-      preenchimento :  6 px  14 px ; raio da borda :  20 px ;
-      tamanho da fonte :  13 px ; peso da fonte : negrito; borda :  1 px sólida var ( --accent );
-      box -shadow :  0  4px 10px  rgba ( 0 ,  0 , 0 , 0.2 ); z -index : 12 ; 
+    .badge-pontuacao {
+      position: absolute; top: 15px; left: 15px;
+      background: var(--cafe-dark); color: var(--accent);
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 13px; font-weight: bold; border: 1px solid var(--accent);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 12;
     }
 
     /* BOTÃO CURTIR + CONTADOR */
-    .container -curtir {
-      posição : absoluta; topo :  15 px ; direita :  15 px ;
-      fundo :  rgba ( 255 ,  255 ,  255 ,  0.95 );
-      preenchimento :  8px  14px ; raio da borda :  20px ;​
-      display : flex ; align-items : center; gap :  6px ;
-      box -shadow :  0  4px 10px  rgba ( 0 , 0 ,  0 , 0.15 ); z - index : 12 ; 
+    .container-curtir {
+      position: absolute; top: 15px; right: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 14px; border-radius: 20px;
+      display: flex; align-items: center; gap: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 12;
     }
-    . btn-curtir {
-      fundo : nenhum; borda : nenhuma; preenchimento :  0 ;
-      tamanho da fonte :  20 px ; cor :  # 888 ; cursor : ponteiro;
-      exibição : flexível; alinhamento de itens : centralizado; justificação do conteúdo : centralizado;
-      transição : transformar 0,2 s facilidade;
+    .btn-curtir {
+      background: none; border: none; padding: 0;
+      font-size: 20px; color: #888; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s ease;
     }
-    . btn-curtir . curtido { cor :  # e63946 ; }
-    . btn-curtir : active { transform :  scale ( 0.8 ); }
-    . contador-numero {
-      tamanho da fonte :  14 px ; peso da fonte : negrito; cor :  var ( --cafe-dark ); família da fonte : sans-serif;
+    .btn-curtir.curtido { color: #e63946; }
+    .btn-curtir:active { transform: scale(0.8); }
+    .contador-numero {
+      font-size: 14px; font-weight: bold; color: var(--cafe-dark); font-family: sans-serif;
     }
 
     /* CORPO DO TEXTO DO CLIENTE */
-    . card-corpo {
-      preenchimento :  20 px ; fundo : branco; exibição : flexível; direção flexível : coluna; espaço :  6 px ;
+    .card-corpo { 
+      padding: 20px; background: white; display: flex; flex-direction: column; gap: 6px;
     }
-    . nome-do-cliente {
-      tamanho da fonte :  17 px ; peso da fonte : negrito; cor :  var ( --cafe-dark ); margem :  0 ;
+    .cliente-nome { 
+      font-size: 17px; font-weight: bold; color: var(--cafe-dark); margin: 0; 
     }
-    . cliente-mensagem {
-      tamanho da fonte :  16 px ; cor :  # 000000 ; altura da linha :  1,5 ; margem :  5 px  0  0  0 ;
-      alinhamento-texto : justificado; quebra-de-palavra : quebra-de-palavra; peso-da-fonte :  500 ;
+    .cliente-mensagem { 
+      font-size: 16px; color: #000000; line-height: 1.5; margin: 5px 0 0 0; 
+      text-align: justify; word-break: break-word; font-weight: 500;
     }
 
-    # carregando {
-      alinhamento do texto : centro; cor :  var ( --cafe-dark ); peso da fonte : negrito; margem superior :  40 px ; tamanho da fonte :  16 px ;
+    #loading {
+      text-align: center; color: var(--cafe-dark); font-weight: bold; margin-top: 40px; font-size: 16px;
     }
     
-    /* 📱 AJUSTE EXTRA PARA CELULARES PEQUENOS */
-    @media ( max-width :  380 px ) {
-      .card -cliente { largura :  94 % ; }
-      .media - container { altura :  390px ; }
+    /* 📱 AJUSTES EXTRA PARA CELULARES PEQUENOS */
+    @media (max-width: 380px) {
+      .card-cliente { width: 94%; }
+      .media-container { height: 390px; }
     }
-  </ estilo >
-</head>​​
-< corpo >
+  </style>
+</head>
+<body>
 
-  < cabeçalho >
-    < div  class =" mural-titulo " >
-        < span > 📸 Mural de Clientes CoffeeArt </ span >
-    </div>​​
-  </ cabeçalho >
+  <header>
+    <div class="mural-titulo">
+        <span>📸 Mural de Clientes CoffeeArt</span>
+    </div>
+  </header>
 
-  < div  id =" loading " > < i  class =" fas fa-coffee fa-spin " > </ i > Carregando momentos dos clientes... </ div >
+  <div id="loading"><i class="fas fa-coffee fa-spin"></i> Carregando momentos dos clientes...</div>
   
-  < div  class =" mural - container " id =" mural " > </div>
+  <div class="mural-container" id="mural"></div>
 
-  < script >
+  <script>
     // URL DO SEU GOOGLE APPS SCRIPT ATUALIZADO (Aba: Form_Responses)
-    const  GOOGLE_SCRIPT_URL  =  'https://script.google.com/macros/s/AKfycbz1eRarDZWVkf7eTCrBfBOQI0ZqgtwA8QBtEz7zhj1Gs6ppGae_7vDEfuXm3CpriUmK/exec' ;
+    const GOOGLE_SCRIPT_URL = 'COLE_AQUI_A_URL_DA_SUA_IMPLANTACAO_DO_WEBAPP';
 
-     função  assíncrona carregarMural ( )  {
-      tentar  {
-        const  res  =  await  fetch ( GOOGLE_SCRIPT_URL ) ;
-        const  posts  =  await  res.json ( ) ;​​
+    async function carregarMural() {
+      try {
+        const res = await fetch(GOOGLE_SCRIPT_URL);
+        const posts = await res.json();
         
-        const  container  =  document.getElementById ( " mural " ) ;
-        document.getElementById ( " loading " ) . style.display = " none " ;  
+        const container = document.getElementById("mural");
+        document.getElementById("loading").style.display = "none";
         
-        se  ( posts.length === 0 ) {​​   
-          recipiente . innerHTML  =  "<p style='color:#4a332d; font-weight:bold;'>Nenhuma foto postada ainda. Seja o primeiro!</p>" ;
-          retornar ;
+        if (posts.length === 0) {
+          container.innerHTML = "<p style='color:#4a332d; font-weight:bold;'>Nenhuma foto postada ainda. Seja o primeiro!</p>";
+          return;
         }
 
-        container.innerHTML = posts.map ( post = > {​​​    
-          const  jaCurtido  =  localStorage . getItem ( `cafe_curt_ ${ post . linha } ` )  ===  'sim' ;
-          const  classeCoracao  =  jaCurtido ? 'fa-solid fa-heart' : 'fa-regular fa-heart' ;
-          const  classeBotao  =  jaCurtido ? 'btn-curtir curtido' : 'btn-curtir' ;
+        container.innerHTML = posts.map(post => {
+          const jaCurtido = localStorage.getItem(`cafe_curt_${post.linha}`) === 'sim';
+          const classeCoracao = jaCurtido ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+          const classeBotao = jaCurtido ? 'btn-curtir curtido' : 'btn-curtir';
           
           // Renderiza Imagem ou Vídeo (Iframe do Drive)
-          let  midiaHTML  =  `<img src=" ${ post . link } " onerror="this.src='https://via.placeholder.com/360x450?text=CoffeeArt'">` ;
-          se  ( post . tipo  ===  "VIDEO" )  {
-            midiaHTML  =  `<iframe src=" ${ post . link } " allow="autoplay"></iframe>` ;
+          let midiaHTML = `<img src="${post.link}" onerror="this.src='https://via.placeholder.com/360x450?text=CoffeeArt'">`;
+          if (post.tipo === "VIDEO") {
+            midiaHTML = `<iframe src="${post.link}" allow="autoplay"></iframe>`;
           }
 
-          retornar  `
+          return `
             <div class="card-cliente">
               <!-- Selo de Pontos -->
-              <div class="badge-pontuacao">⭐ Pontos: ${ post . pontuação } </div>
+              <div class="badge-pontuacao">⭐ Pontos: ${post.pontuacao}</div>
               
               <!-- Sistema de Curtir -->
               <div class="container-curtir">
-                  <button class=" ${ classeBotao } " onclick="curtirPost(this, ${ post . linha } )">
-                    <i class=" ${ classeCoracao } "></i>
+                  <button class="${classeBotao}" onclick="curtirPost(this, ${post.linha})">
+                    <i class="${classeCoracao}"></i>
                   </button>
-                  <span class="contador-numero" id="count- ${ post . linha } "> ${ post . curtidas } </span>
+                  <span class="contador-numero" id="count-${post.linha}">${post.curtidas}</span>
               </div>
 
               <div class="media-container">
-                ${ midiaHTML }
+                ${midiaHTML}
               </div>
 
               <div class="card-corpo">
-                <h3 class="cliente-nome">👤 ${ post . nome } </h3>
-                ${ postagem . mensagem ? `<p class="cliente-mensagem"> ${ post . mensagem } </p>` : '' }
+                <h3 class="cliente-nome">👤 ${post.nome}</h3>
+                ${post.mensagem ? `<p class="cliente-mensagem">${post.mensagem}</p>` : ''}
               </div>
             </div>
-          ` ;
-        } ) . juntar ( '' ) ;
+          `;
+        }).join('');
 
-      }  catch  ( e )  {
-        console . erro ( "Erro ao carregar o mural:" ,  e ) ;
-        documento . getElementById ( "carregando" ) . innerHTML  =  "❌ Erro ao carregar o mural. Verifique a URL do Script." ;
+      } catch (e) {
+        console.error("Erro ao carregar o mural:", e);
+        document.getElementById("loading").innerHTML = "❌ Erro ao carregar o mural. Verifique a URL do Script.";
       }
     }
 
-     função  assíncrona curtirPost ( btn ,  linha )  {
-      const  icone  =  btn.querySelector ( ' i ' ) ;
-      const  txtContador  =  documento . getElementById ( `count- ${ linha } ` ) ;
-      const  jaCurtido  =  localStorage . getItem ( `cafe_curt_ ${ linha } ` )  ===  'sim' ;
+    async function curtirPost(btn, linha) {
+      const icone = btn.querySelector('i');
+      const txtContador = document.getElementById(`count-${linha}`);
+      const jaCurtido = localStorage.getItem(`cafe_curt_${linha}`) === 'sim';
       
-      let  atual  =  parseInt ( txtContador . innerText )  ||  0 ;
+      let atual = parseInt(txtContador.innerText) || 0;
 
       // Impede curtir duas vezes localmente
-      se  ( jaCurtido )  retornar ;
+      if (jaCurtido) return;
 
-      btn.classList.add ( ' curtido ' ) ;​​
-      ícone . className  =  'fa-solid fa-heart' ;
-      armazenamento local . setItem ( `cafe_curt_ ${ linha } ` ,  'sim' ) ;
-      txtContador . TextoInterior  =  atual  +  1 ;
+      btn.classList.add('curtido');
+      icone.className = 'fa-solid fa-heart';
+      localStorage.setItem(`cafe_curt_${linha}`, 'sim');
+      txtContador.innerText = atual + 1;
 
-      // Envia comando via POST para somar a planilha na linha exata
-      tentar  {
-        aguardar  fetch ( GOOGLE_SCRIPT_URL ,  {
-          método : 'POST' ,
-          modo : 'sem CORS' ,
-          corpo : JSON . stringify ( {  linha : linha  } )
-        } ) ;
-      }  catch  ( err )  {  console . error ( "Erro ao computador curtido:" ,  err ) ;  }
+      // Envia comando via POST para somar na planilha na linha exata
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({ linha: linha })
+        });
+      } catch (err) { console.error("Erro ao computar curtida:", err); }
     }
 
     // Inicializa o Mural
-    carregadoMural ( ) ;
-  </script>​​
-</body>​​
-</ html >
+    carregarMural();
+  </script>
+</body>
+</html>
