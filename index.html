@@ -73,6 +73,8 @@
     }
     .btn-curtir.curtido { color: #e63946; }
     .btn-curtir:active { transform: scale(0.8); }
+    
+    /* ESTILIZAÇÃO DO NÚMERO DE CURTIDAS */
     .contador-numero {
       font-size: 14px; font-weight: bold; color: var(--cafe-dark); font-family: sans-serif;
     }
@@ -113,8 +115,8 @@
   <div class="mural-container" id="mural"></div>
 
   <script>
-    // URL DO SEU GOOGLE APPS SCRIPT ATUALIZADO (Aba: Form_Responses)
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIS4r7gh3TIW17xhosOasPDAjqwiJgwte8lxwFQCmCCZ7JocRc3iudW5M0A9u5UUM/exec';
+    // URL DO SEU GOOGLE APPS SCRIPT NOVA ATUALIZADA
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo5TeybwC3OfrRp9NSHoltg8JkgRIPvn4q2kSMKBRYZ8FRof1v7PhDhnDnkWAM28GE/exec';
 
     async function carregarMural() {
       try {
@@ -142,10 +144,8 @@
 
           return `
             <div class="card-cliente">
-              <!-- Selo de Pontos -->
               <div class="badge-pontuacao">⭐ Pontos: ${post.pontuacao}</div>
               
-              <!-- Sistema de Curtir -->
               <div class="container-curtir">
                   <button class="${classeBotao}" onclick="curtirPost(this, ${post.linha})">
                     <i class="${classeCoracao}"></i>
@@ -178,15 +178,13 @@
       
       let atual = parseInt(txtContador.innerText) || 0;
 
-      // Impede curtir duas vezes localmente
       if (jaCurtido) return;
 
       btn.classList.add('curtido');
       icone.className = 'fa-solid fa-heart';
       localStorage.setItem(`cafe_curt_${linha}`, 'sim');
-      txtContador.innerText = atual + 1;
+      txtContador.innerText = Glide + 1;
 
-      // Envia comando via POST para somar na planilha na linha exata
       try {
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
