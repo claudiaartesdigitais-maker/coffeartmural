@@ -40,12 +40,15 @@
       width: 360px; display: flex; flex-direction: column;
     }
 
-    /* RECIPIENTE DA FOTO/VÍDEO */
+    /* RECIPIENTE DA FOTO/VÍDEO SEM FUNDO PRETO */
     .media-container {
-      width: 100%; height: 450px; position: relative; background: #000;
+      width: 100%; height: 450px; position: relative; background: var(--cafe-light); overflow: hidden;
     }
-    .media-container iframe, .media-container img {
-      width: 100%; height: 100%; object-fit: cover; border: none; display: block;
+    .media-container img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .media-container iframe {
+      width: 100%; height: 100%; border: none; display: block; background: var(--cafe-light);
     }
 
     /* SELO DE PONTUAÇÃO */
@@ -93,7 +96,6 @@
       text-align: center; color: var(--cafe-dark); font-weight: bold; margin-top: 40px; font-size: 16px;
     }
     
-    /* 📱 AJUSTE PARA CELULARES PEQUENOS */
     @media (max-width: 380px) {
       .card-cliente { width: 94%; }
       .media-container { height: 390px; }
@@ -113,8 +115,7 @@
   <div class="mural-container" id="mural"></div>
 
   <script>
-    // URL DO GOOGLE APPS SCRIPT
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHiXRlzfjLRDElkIttxQJFeakp-wVnlGAcMl7aLbH5n_kAHt8YLBrsbZ9hkKll-09l/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1LaxQH-CZleljR5lEByCHYYFJJST0awRM16gwovZ0kd_D_Hcdpr1ydCqip4wSsjRV/exec';
 
     async function carregarMural() {
       try {
@@ -134,10 +135,10 @@
           const classeCoracao = jaCurtido ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
           const classeBotao = jaCurtido ? 'btn-curtir curtido' : 'btn-curtir';
           
-          // Suporta links do Drive renderizando em IFRAME (/preview) ou IMG tradicional
-          let midiaHTML = `<iframe src="${post.link}" allow="autoplay"></iframe>`;
-          if (post.link.includes('via.placeholder.com') || post.link.includes('lh3.googleusercontent.com')) {
-            midiaHTML = `<img src="${post.link}" alt="Foto do cliente">`;
+          // Se for VÍDEO carrega iframe, se for FOTO usa a tag img limpa (sem fundo preto)
+          let midiaHTML = `<img src="${post.link}" alt="Foto do cliente" onerror="this.src='https://via.placeholder.com/360x450?text=CoffeeArt'">`;
+          if (post.tipo === "VIDEO" || post.link.includes('/preview')) {
+            midiaHTML = `<iframe src="${post.link}" allow="autoplay"></iframe>`;
           }
 
           return `
@@ -194,7 +195,6 @@
       }
     }
 
-    // Inicializa o Mural
     carregarMural();
   </script>
 </body>
